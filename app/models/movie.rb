@@ -11,6 +11,8 @@
 
 class Movie < Content
   def playback
-    assets.first
+    {
+      movie_playback: assets.first
+    }
   end
 end

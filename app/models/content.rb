@@ -13,4 +13,9 @@ class Content < ApplicationRecord
   has_many :assets
   has_many :variants
   default_scope { order(created_at: :asc) }
+
+  def media
+    type == "Movie" ? playback : episodes
+  end
+
 end

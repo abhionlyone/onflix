@@ -43,7 +43,6 @@ class Purchase < ApplicationRecord
     end
   end
 
-
   private
 
   def set_expires_at

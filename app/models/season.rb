@@ -11,6 +11,8 @@
 
 class Season < Content
   def episodes
-    assets
+    {
+      episodes: assets
+    }
   end
 end

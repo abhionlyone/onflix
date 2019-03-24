@@ -19,14 +19,14 @@ class Api::V1::ApiController < ActionController::Base
   end
 
   def authenticate_user!
-    if request.headers['access-token'].nil? || !user_signed_in?
+    if request.headers['access-token'].blank? || request.headers['uid'].blank? || !user_signed_in?
       render json: {message: 'Please signin or signup/ Pass valid access-token and uid in headers'}, status: 401
     end
   end
 
   def current_user
     user = User.find_by_email(request.headers['uid'])
-    @current_user ||= (user.validate_token?(request.headers['access-token']) ? user : nil)
+    @current_user ||= ((user && user.validate_token?(request.headers['access-token'])) ? user : nil)
   end
 
 end

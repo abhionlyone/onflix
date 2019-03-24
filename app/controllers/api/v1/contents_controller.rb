@@ -18,15 +18,14 @@ class Api::V1::ContentsController < Api::V1::ApiController
     @variant = Variant.find(params[:variant_id])
     purchase = current_user.purchases.create(variant: @variant, content: @variant.content)
     if purchase.save
-      puts "#{purchase.inspect}"
-      render json: PurchaseSerializer.new(@purchase)
+      head :created
     else
-      render json: purchase.errors.full_messages, status: 422
+      render_error(purchase.errors.full_messages.to_sentence, :unprocessable_entity)
     end
   end
 
-  def my_purchases
-    @purchases = current_user.purchases.alive.includes(:content)
+  def library
+    @purchases = current_user.library.includes(:content, :variant)
     render json: PurchaseSerializer.new(@purchases)
   end
 end

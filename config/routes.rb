@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         collection do
           get :movies
           get :seasons
-          get :my_purchases
+          get :library
           post :purchase
         end
       end
