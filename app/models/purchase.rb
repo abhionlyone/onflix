@@ -26,6 +26,8 @@ class Purchase < ApplicationRecord
 
   before_create :set_expires_at
 
+  default_scope { order(expires_at: :asc) }
+
   scope :alive, lambda { where("expires_at > ?", Time.now) }
   scope :dead, lambda { where("expires_at < ?", Time.now) }
 
