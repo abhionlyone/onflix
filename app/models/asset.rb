@@ -16,4 +16,5 @@
 
 class Asset < ApplicationRecord
   belongs_to :content
+  validates :sequence_number, uniqueness: {scope: :content_id}, presence: true
 end

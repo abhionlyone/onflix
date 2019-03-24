@@ -3,8 +3,6 @@
 # Table name: contents
 #
 #  id         :integer          not null, primary key
-#  price      :float
-#  quality    :string
 #  title      :string
 #  type       :string
 #  created_at :datetime         not null
@@ -12,4 +10,7 @@
 #
 
 class Movie < Content
+  def playback
+    assets.first
+  end
 end
