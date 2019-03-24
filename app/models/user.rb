@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
@@ -30,11 +29,26 @@
 #  index_users_on_uid_and_provider      (uid,provider) UNIQUE
 #
 
-
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :validatable  
   include DeviseTokenAuth::Concerns::User
  
   has_many :purchases
+
+  def library
+    purchases.alive
+  end
+
+  def create_token
+    random = SecureRandom.urlsafe_base64(nil, false)
+    self.token = BCrypt::Password.create(random)
+    self.save!
+    random
+  end
+
+  def validate_token?(tok)
+    BCrypt::Password.new(token) == tok
+  end
+
 end

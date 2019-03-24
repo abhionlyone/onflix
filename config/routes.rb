@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  mount_devise_token_auth_for 'User', at: 'auth'
+  mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+      sessions: 'auth/sessions',
+  }
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :contents, only: :index do
+        collection do
+          get :movies
+          get :seasons
+          get :my_purchases
+          post :purchase
+        end
+      end
+    end
+  end
 end
