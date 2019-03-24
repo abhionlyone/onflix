@@ -25,6 +25,7 @@ class Purchase < ApplicationRecord
   belongs_to :variant
 
   before_create :set_expires_at
+  after_create :expire_user_cache
 
   default_scope { order(expires_at: :asc) }
 
@@ -42,6 +43,11 @@ class Purchase < ApplicationRecord
       errors.add(:base, "You've already purchased this item.")
     end
   end
+
+  def expire_user_cache
+    user.expire_library_cache
+  end
+
 
   private
 

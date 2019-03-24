@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def expire_library_cache
+    Rails.cache.delete "user_library_#{id}"
+  end
+
   def create_token
     random = SecureRandom.urlsafe_base64(nil, false)
     self.token = BCrypt::Password.create(random)
