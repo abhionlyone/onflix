@@ -1,16 +1,16 @@
 class Api::V1::ContentsController < Api::V1::ApiController
   def index
-    @contents = Content.includes(:assets, :variants)
+    @contents = Content.cached_results
     render json: ContentSerializer.new(@contents)
   end
 
   def movies
-    @contents = Movie.includes(:assets, :variants)
+    @contents = Movie.cached_results
     render json: ContentSerializer.new(@contents)
   end
 
   def seasons
-    @contents = Season.includes(:assets, :variants)
+    @contents = Season.cached_results
     render json: ContentSerializer.new(@contents)
   end
 

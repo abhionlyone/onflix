@@ -60,4 +60,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
  
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.cache_store = :redis_store, {
+    expires_in: 1.hour,
+    namespace: 'cache',
+    redis: { host: 'localhost', port: 6379, db: 0 },
+  }
 end

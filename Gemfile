@@ -8,6 +8,8 @@ gem 'devise_token_auth'
 gem 'jbuilder', '~> 2.5'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
+gem "redis", "~> 4.0"
+gem 'redis-rails', '~> 5.0', '>= 5.0.2'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'turbolinks', '~> 5'

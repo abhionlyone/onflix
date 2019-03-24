@@ -1,7 +1,7 @@
 class Api::V1::ApiController < ActionController::Base
 #   include DeviseTokenAuth::Concerns::SetUserByToken
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  before_action :authenticate_user!  
+#  before_action :authenticate_user!  
   skip_before_action :verify_authenticity_token
 
   def render_error(message, status)

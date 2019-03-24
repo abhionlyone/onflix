@@ -37,7 +37,9 @@ class User < ActiveRecord::Base
   has_many :purchases
 
   def library
-    purchases.alive
+    Rails.cache.fetch(["user_library_#{id}"], expires_in: 5.minutes) do
+      purchases.alive
+    end
   end
 
   def create_token
