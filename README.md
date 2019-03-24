@@ -1,28 +1,20 @@
-# README
+# Tech Stack
+This project depends on folowing Stack:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version 2.5.1
 
-Things you may want to cover:
+* Rails 5.2.2.1
 
-* Ruby version
+* SQLite For Dev and Test environments. PostgreSQL for Production
 
-* System dependencies
+* Redis for storing DB Query Cache
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 # API DOCS
 
-* Find the API docs at https://documenter.getpostman.com/view/779034/S17rvU4e
+* Read the [API docs](https://documenter.getpostman.com/view/779034/S17rvU4e).
+
+
+# Run Specs
+
+* ``` bundlex exec rspec ```
