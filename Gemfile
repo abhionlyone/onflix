@@ -11,7 +11,6 @@ gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem "redis", "~> 4.0"
 gem 'redis-rails', '~> 5.0', '>= 5.0.2'
 gem 'sass-rails', '~> 5.0'
-gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uglifier', '>= 1.3.0'
@@ -19,6 +18,12 @@ gem 'fast_jsonapi'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'sqlite3', '~> 1.3', '< 1.4'
 end
 
 group :development do
@@ -30,8 +35,10 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
 end
 
+group :production do
+  gem 'pg' 
+end
