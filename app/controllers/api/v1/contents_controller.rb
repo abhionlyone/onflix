@@ -21,7 +21,7 @@ class Api::V1::ContentsController < Api::V1::ApiController
       puts "#{purchase.inspect}"
       render json: PurchaseSerializer.new(@purchase)
     else
-      render json: purchase.errors.full_messages
+      render json: purchase.errors.full_messages, status: 422
     end
   end
 
