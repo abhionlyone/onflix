@@ -12,7 +12,7 @@ This project depends on folowing Stack:
 
 # API DOCS
 
-* Read the [API docs](https://documenter.getpostman.com/view/779034/S17tQnXG).
+* Read the [API docs](https://documenter.getpostman.com/view/779034/17tQnX).
 
 # Run Specs
 
